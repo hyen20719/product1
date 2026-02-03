@@ -4,39 +4,79 @@ document.addEventListener('DOMContentLoaded', () => {
     const analysisResultContainer = document.getElementById('analysis-result-container');
     const analysisText = document.getElementById('analysis-text');
 
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
     imageUpload.addEventListener('change', (event) => {
         const file = event.target.files[0];
         if (file) {
-            // Display the image preview
             const reader = new FileReader();
             reader.onload = (e) => {
                 imagePreview.src = e.target.result;
             };
             reader.readAsDataURL(file);
 
-            // Show the result container
             analysisResultContainer.classList.remove('hidden');
+            
+            // Scroll to the result section for better UX
+            analysisResultContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-            // Simulate analysis and display the result
-            const impression = analyzeFirstImpression();
-            analysisText.textContent = impression;
+            generateAndDisplayAnalysis();
         }
     });
 
-    function analyzeFirstImpression() {
-        const impressions = [
-            "신뢰감 있고 정직해 보이는 인상입니다. 차분하고 안정적인 분위기를 풍기며, 책임감 있는 태도로 주변 사람들에게 믿음을 줍니다.",
-            "지적이고 통찰력 있는 눈빛을 가졌습니다. 문제의 핵심을 꿰뚫어 보는 능력이 있으며, 논리적이고 분석적인 사고방식을 가지고 있을 것 같습니다.",
-            "밝고 긍정적인 에너지가 넘치는 인상입니다. 항상 미소를 잃지 않으며, 친화력이 좋아 처음 만나는 사람과도 쉽게 어울릴 수 있습니다.",
-            "창의적이고 예술적인 감각이 돋보이는 인상입니다. 독특한 개성과 자신만의 스타일을 가지고 있으며, 새로운 아이디어를 내는 데 뛰어날 것 같습니다.",
-            "강한 의지와 결단력이 느껴지는 인상입니다. 목표를 향해 끊임없이 노력하며, 어려움이 닥쳐도 쉽게 포기하지 않는 강인한 정신력을 가졌습니다.",
-            "따뜻하고 다정한 마음씨를 가진 인상입니다. 다른 사람의 이야기에 귀 기울여주고, 공감하는 능력이 뛰어나 주변 사람들에게 편안함을 줍니다.",
-            "유머 감각이 뛰어나고 재치 있는 사람일 것 같습니다. 재치 있는 말솜씨로 분위기를 즐겁게 만들며, 긍정적인 에너지를 전파합니다.",
-            "카리스마 있고 리더십 있는 분위기를 풍깁니다. 그룹을 이끄는 능력이 뛰어나며, 사람들을 설득하고 동기를 부여하는 데 재능이 있을 것 같습니다."
-        ];
+    function generateAndDisplayAnalysis() {
+        const traits = {
+            "신뢰도": [
+                "매우 정직하고 책임감 있는 인상을 줍니다. 주변 사람들이 당신을 깊이 신뢰할 것 같습니다.",
+                " 안정적이고 차분한 분위기를 풍겨, 함께 있으면 마음이 편안해지는 인상입니다.",
+                "진실성이 느껴지는 눈빛으로, 하는 말에 강한 믿음을 주는 사람입니다."
+            ],
+            "창의성": [
+                "독창적이고 예술적인 감각이 돋보입니다. 남다른 아이디어로 주변을 놀라게 할 것 같습니다.",
+                "자유로운 영혼의 소유자로, 틀에 얽매이지 않는 사고방식을 가졌습니다.",
+                "새로운 것을 시도하는 데 두려움이 없는, 호기심 많고 개성 있는 인상입니다."
+            ],
+            "리더십": [
+                "강한 카리스마와 결단력이 느껴집니다. 자연스럽게 그룹을 이끄는 리더의 자질이 보입니다.",
+                "자신감 넘치는 태도로 사람들에게 동기를 부여하고, 목표를 향해 나아가게 만드는 힘이 있습니다.",
+                "넓은 시야와 통찰력으로 팀을 올바른 방향으로 이끌어갈 수 있는 인상입니다."
+            ],
+            "친근함": [
+                "밝고 긍정적인 에너지가 넘쳐, 주변까지 환하게 만드는 사람입니다.",
+                "따뜻하고 다정한 미소로 처음 만나는 사람과도 쉽게 친해질 수 있는 매력이 있습니다.",
+                "유머 감각이 뛰어나고 재치 있는 말솜씨로 항상 분위기를 즐겁게 만듭니다."
+            ],
+             "지성": [
+                "지적이고 통찰력 있는 눈빛을 가졌습니다. 사물의 핵심을 꿰뚫어 보는 능력이 뛰어납니다.",
+                "논리적이고 분석적인 사고방식을 가지고 있어, 문제 해결에 뛰어난 재능을 보일 것 같습니다.",
+                "깊이 있는 대화를 나눌 수 있는, 학구적이고 지적인 분위기를 풍깁니다."
+            ]
+        };
 
-        // Return a random impression from the list
-        const randomIndex = Math.floor(Math.random() * impressions.length);
-        return impressions[randomIndex];
+        let analysisHTML = '';
+
+        for (const trait in traits) {
+            const descriptions = traits[trait];
+            const randomDescription = descriptions[Math.floor(Math.random() * descriptions.length)];
+            
+            analysisHTML += `
+                <div class="trait">
+                    <div>
+                        <div class="trait-name">${trait}</div>
+                        <div class="trait-description">${randomDescription}</div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        analysisText.innerHTML = analysisHTML;
     }
 });
