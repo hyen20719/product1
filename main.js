@@ -68,4 +68,4 @@ function generateLottoNumbers() {
 
 generateButton.addEventListener('click', generateLottoNumbers);
 
-// generateLottoNumbers();
+generateLottoNumbers();
