@@ -1,163 +1,109 @@
 :root {
-    --primary-color: #f0f0f0;
-    --secondary-color: #333;
-    --accent-color: #ff9800;
-    --ball-size: 60px;
+    --primary-color: #ffffff;
+    --secondary-color: #f0f2f5;
+    --text-color: #333;
+    --accent-color: #007bff;
+    --border-radius: 12px;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    margin: 0;
-    background-image: subtle-noise-texture.png;
 }
 
 header {
+    text-align: center;
     margin-bottom: 2rem;
 }
 
-h1 {
+header h1 {
     font-size: 2.5rem;
-    text-align: center;
     color: var(--accent-color);
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.1rem;
+    color: #666;
 }
 
 main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 100%;
+    max-width: 800px;
 }
 
-#lotto-numbers-container {
-    display: flex;
-    gap: 1rem;
+.upload-container {
+    text-align: center;
     margin-bottom: 2rem;
 }
 
-lotto-ball {
-    width: var(--ball-size);
-    height: var(--ball-size);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: white;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2), inset 0 2px 4px rgba(255,255,255,0.3);
-    animation: pop-in 0.5s ease-out forwards;
-}
-
-@keyframes pop-in {
-    0% {
-        transform: scale(0);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-#generate-button {
+.upload-label {
+    display: inline-block;
     padding: 1rem 2rem;
     font-size: 1.2rem;
     font-weight: bold;
     background-color: var(--accent-color);
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    transition: all 0.2s ease-in-out;
-    margin-bottom: 3rem; /* Add some space below the button */
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-#generate-button:hover {
-    background-color: #e68a00;
+.upload-label:hover {
+    background-color: #0056b3;
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
 }
 
-#generate-button:active {
-    transform: translateY(0);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+#image-upload {
+    display: none;
 }
 
-/* Contact Form Styles */
-#contact-form-section {
-    background-color: white;
+#analysis-result-container {
+    background-color: var(--primary-color);
+    border-radius: var(--border-radius);
     padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    width: 90%;
-    max-width: 500px;
-    margin-top: 2rem;
-}
-
-#contact-form-section h2 {
-    text-align: center;
-    color: var(--secondary-color);
-    margin-bottom: 1.5rem;
-}
-
-#contact-form-section form {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
     display: flex;
-    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
 }
 
-#contact-form-section label {
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-    color: var(--secondary-color);
+#image-preview-container {
+    flex: 1;
+    text-align: center;
 }
 
-#contact-form-section input[type="text"],
-#contact-form-section input[type="email"],
-#contact-form-section textarea {
-    padding: 0.8rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
+#image-preview {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    border: 1px solid #ddd;
 }
 
-#contact-form-section input[type="text"]:focus,
-#contact-form-section input[type="email"]:focus,
-#contact-form-section textarea:focus {
-    border-color: var(--accent-color);
-    outline: none;
-    box-shadow: 0 0 5px rgba(255, 152, 0, 0.5);
+#analysis-text-container {
+    flex: 2;
 }
 
-#contact-form-section textarea {
-    resize: vertical;
+#analysis-text-container h2 {
+    color: var(--accent-color);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 0.5rem;
+    margin-top: 0;
 }
 
-#contact-form-section button[type="submit"] {
-    background-color: var(--accent-color);
-    color: white;
-    padding: 1rem 1.5rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+#analysis-text {
     font-size: 1.1rem;
-    font-weight: bold;
-    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    white-space: pre-wrap; /* To preserve formatting from the JS */
 }
 
-#contact-form-section button[type="submit"]:hover {
-    background-color: #e68a00;
-    transform: translateY(-2px);
-}
-
-#contact-form-section button[type="submit"]:active {
-    transform: translateY(0);
+.hidden {
+    display: none;
 }

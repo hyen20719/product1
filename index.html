@@ -3,32 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lotto Number Generator</title>
+    <title>First Impression Analyzer</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Lotto Number Generator</h1>
+        <h1>첫인상 분석 (First Impression Analysis)</h1>
+        <p>정면 얼굴 사진을 업로드하여 첫인상을 분석해보세요.</p>
     </header>
     <main>
-        <div id="lotto-numbers-container"></div>
-        <button id="generate-button">Generate Numbers</button>
-
-        <section id="contact-form-section">
-            <h2>제휴 문의 (Partnership Inquiry)</h2>
-            <form action="https://formspree.io/f/xykpveqo" method="POST">
-                <label for="name">이름 (Name):</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="email">이메일 (Email):</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="message">문의 내용 (Message):</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-
-                <button type="submit">보내기 (Send)</button>
-            </form>
-        </section>
+        <div class="upload-container">
+            <input type="file" id="image-upload" accept="image/*">
+            <label for="image-upload" class="upload-label">사진 선택 (Choose Photo)</label>
+        </div>
+        <div id="analysis-result-container" class="hidden">
+            <div id="image-preview-container">
+                <img id="image-preview" src="#" alt="Uploaded Face">
+            </div>
+            <div id="analysis-text-container">
+                <h2>분석 결과 (Analysis Result)</h2>
+                <p id="analysis-text"></p>
+            </div>
+        </div>
     </main>
     <script src="main.js"></script>
 </body>
