@@ -1,98 +1,155 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <!-- Google AdSense -->
+    <!-- AdSense & Metadata -->
     <meta name="google-adsense-account" content="ca-pub-6263853347162634">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6263853347162634"
-     crossorigin="anonymous"></script>
-    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6263853347162634" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 첫인상 분석기 - 당신의 첫인상은?</title>
-    <meta name="description" content="얼굴 사진을 업로드하고 AI가 분석하는 당신의 첫인상을 확인해보세요. 신뢰도, 매력도, 창의성 등 다양한 측면에서 당신의 이미지를 분석해드립니다.">
+    <title>AI 첫인상 심층 분석 - 당신의 숨겨진 매력 발견하기</title>
+    <meta name="description" content="AI가 당신의 얼굴 사진을 통해 첫인상, 성격, 잠재력 등을 심층 분석해 드립니다. 단순한 분석을 넘어, 당신의 숨겨진 매력과 가능성을 발견해보세요.">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#home" class="nav-logo">AI 첫인상 분석기</a>
+            <a href="#home" class="nav-logo">AI 인상 분석</a>
             <ul class="nav-menu">
-                <li class="nav-item"><a href="#home" class="nav-link">홈</a></li>
+                <li class="nav-item"><a href="#home" class="nav-link">분석하기</a></li>
+                <li class="nav-item"><a href="#insights" class="nav-link">인사이트</a></li>
                 <li class="nav-item"><a href="#about" class="nav-link">소개</a></li>
                 <li class="nav-item"><a href="#privacy" class="nav-link">개인정보처리방침</a></li>
-                <li class="nav-item"><a href="#contact" class="nav-link">문의하기</a></li>
             </ul>
         </div>
     </nav>
 
-    <header id="home" class="page-section">
-        <div class="header-content">
-            <h1>AI가 분석하는 당신의 첫인상</h1>
-            <p class="subtitle">정면 얼굴 사진을 업로드하고, 다른 사람에게 비춰지는 당신의 모습을 확인해보세요.</p>
+    <!-- Main Analyzer Section -->
+    <header id="home" class="page-section hero">
+        <div class="section-container">
+            <h1>AI 심층 인상 분석</h1>
+            <p class="subtitle">사진 한 장으로 당신의 첫인상, 성격, 잠재력을 발견해보세요.</p>
+            <div class="upload-area">
+                <input type="file" id="image-upload" accept="image/*" hidden>
+                <label for="image-upload" class="upload-label">분석 시작하기</label>
+                <p class="disclaimer">* 사진은 절대 저장되지 않으며, 분석 후 즉시 파기됩니다.</p>
+            </div>
         </div>
     </header>
 
-    <main class="page-section">
-        <div class="upload-container">
-            <input type="file" id="image-upload" accept="image/*" hidden>
-            <label for="image-upload" class="upload-label">얼굴 사진 업로드하기</label>
-            <p class="disclaimer">* 업로드된 사진은 서버에 저장되지 않습니다.</p>
+    <!-- Analysis Process & Results -->
+    <main id="analysis-section" class="page-section hidden">
+        <!-- 1. Analyzing Animation -->
+        <div id="analyzing-container" class="section-container">
+            <h2>AI가 당신의 인상을 심층 분석중입니다...</h2>
+            <div class="progress-bar-container">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+            <div id="progress-text" class="progress-text">분석 준비 중...</div>
         </div>
 
-        <div id="analysis-result-container" class="hidden">
-            <div id="image-preview-container">
-                <img id="image-preview" src="#" alt="Uploaded Face">
-            </div>
-            <div id="analysis-text-container">
-                <h2>AI 첫인상 분석 결과</h2>
-                <div id="analysis-text"></div>
+        <!-- 2. Analysis Report -->
+        <div id="analysis-result-container" class="section-container hidden">
+            <h2>당신의 첫인상 심층 분석 리포트</h2>
+            <div class="report-layout">
+                <div class="report-left">
+                    <img id="image-preview" src="#" alt="Uploaded Face">
+                    <div class="summary-box">
+                        <h3>주요 인상 키워드</h3>
+                        <p id="keywords"></p>
+                    </div>
+                </div>
+                <div class="report-right">
+                    <div id="detailed-analysis"></div>
+                </div>
             </div>
         </div>
     </main>
+    
+    <!-- Blog/Insights Section -->
+    <section id="insights" class="page-section">
+        <div class="section-container">
+            <h2 class="section-title">인사이트: 더 나은 나를 위한 글</h2>
+            <div class="article-grid">
+                <!-- Article 1 -->
+                <a href="#article1" class="article-card">
+                    <h3>좋은 첫인상을 만드는 5가지 방법</h3>
+                    <p>과학적으로 증명된, 당신의 첫인상을 긍정적으로 만드는 간단한 팁들을 알아보세요.</p>
+                </a>
+                <!-- Article 2 -->
+                <a href="#article2" class="article-card">
+                    <h3>'듣기'의 기술: 최고의 커뮤니케이션 스킬</h3>
+                    <p>말하기보다 중요한 듣기. 관계를 극적으로 개선하는 경청의 힘에 대하여.</p>
+                </a>
+                <!-- Article 3 -->
+                <a href="#article3" class="article-card">
+                    <h3>무의식이 드러나는 비언어적 신호들</h3>
+                    <p>몸짓, 표정, 시선 등. 당신도 모르게 보내고 있는 비언어적 신호들을 이해하고 활용해보세요.</p>
+                </a>
+            </div>
+        </div>
+    </section>
 
+    <!-- About Section -->
     <section id="about" class="page-section info-section">
         <div class="section-container">
-            <h2>소개 (About)</h2>
-            <p>AI 첫인상 분석기는 사용자가 업로드한 얼굴 사진을 기반으로 첫인상을 분석해주는 재미있는 도구입니다. 최신 AI 기술을 모방하여 신뢰도, 창의성, 친근함 등 다양한 지표를 통해 다른 사람에게 비춰지는 당신의 이미지를 알려드립니다.</p>
-            <p>본 서비스는 오직 오락적인 목적으로만 사용되어야 하며, 분석 결과는 과학적인 근거가 없는 임의의 결과입니다. 저희는 사용자의 개인정보를 중요하게 생각하며, 업로드된 사진은 절대 서버에 저장하거나 수집하지 않습니다. 안심하고 이용해주세요.</p>
+            <h2 class="section-title">소개 (About)</h2>
+            <p>AI 첫인상 분석기는 사용자가 자신의 사회적 이미지를 더 잘 이해하고 발전시킬 수 있도록 돕기 위해 만들어졌습니다. 저희는 최신 AI 기술을 모방하여, 사진 속 얼굴을 통해 나타나는 다양한 인상적 특징들을 분석하고, 이를 바탕으로 한 개인 맞춤형 리포트를 제공합니다.</p>
+            <p>본 서비스는 오락적인 요소를 포함하고 있으나, 긍정적인 자기 성찰의 기회를 제공하는 것을 목표로 합니다. 분석 결과는 절대적인 평가가 아니며, 자신을 더 깊이 이해하는 데 참고 자료로 활용하시기 바랍니다.</p>
         </div>
     </section>
 
+    <!-- Privacy Policy Section -->
     <section id="privacy" class="page-section info-section">
         <div class="section-container">
-            <h2>개인정보처리방침 (Privacy Policy)</h2>
-            <p><strong>1. 수집하는 개인정보</strong><br>본 서비스는 사용자의 어떠한 개인정보도 수집, 저장, 또는 처리하지 않습니다. 사진 업로드 기능은 브라우저 내에서만 처리되며, 서버로 전송되지 않습니다.</p>
-            <p><strong>2. 쿠키 및 광고</strong><br>본 사이트는 서비스 품질 향상 및 광고 게재를 위해 Google AdSense를 사용하고 있습니다. Google AdSense는 쿠키를 사용하여 사용자의 관심사에 맞는 광고를 표시할 수 있습니다. 사용자는 브라우저 설정을 통해 쿠키 사용을 거부할 수 있습니다.</p>
-            <p><strong>3. 개인정보 보호</strong><br>저희는 사용자의 개인정보를 보호하기 위해 최선을 다하고 있습니다. 업로드된 이미지는 분석 후 즉시 파기되며, 어떠한 형태로도 저장되지 않습니다.</p>
-        </div>
-    </section>
-    
-    <section id="contact" class="page-section info-section">
-        <div class="section-container">
-            <h2>문의하기 (Contact)</h2>
-            <p>서비스에 대한 질문이나 제휴 문의는 아래 양식을 통해 보내주세요.</p>
-            <form action="https://formspree.io/f/xykpveqo" method="POST" class="contact-form">
-                <div class="form-group">
-                    <label for="name">이름:</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">이메일:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">메시지:</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">보내기</button>
-            </form>
+            <h2 class="section-title">개인정보처리방침 (Privacy Policy)</h2>
+            <p><strong>1. 정보의 미수집 원칙</strong><br>저희는 사용자의 개인정보를 가장 중요하게 생각합니다. AI 첫인상 분석기는 사용자가 업로드하는 사진을 포함한 어떠한 개인 식별 정보도 수집, 저장, 또는 제3자에게 공유하지 않습니다. 모든 사진 분석은 사용자의 브라우저 내에서 일시적으로 처리되며, 서버로 전송되거나 저장되지 않습니다.</p>
+            <p><strong>2. 광고에 대한 안내</strong><br>본 사이트는 양질의 콘텐츠를 무료로 제공하기 위해 Google AdSense 광고를 사용합니다. Google은 쿠키를 사용하여 사용자의 웹사이트 방문 기록을 기반으로 맞춤형 광고를 표시할 수 있습니다. 이는 개인을 식별하지 않는 비식별 정보입니다. 사용자는 언제든지 브라우저 설정을 변경하여 쿠키 사용을 제어할 수 있습니다.</p>
         </div>
     </section>
 
+    <!-- Article Pages -->
+    <section id="article1" class="page-section article-page">
+         <div class="section-container article-content">
+            <a href="#insights" class="back-link">&larr; 전체 글 보기</a>
+            <h2>좋은 첫인상을 만드는 5가지 방법</h2>
+            <p>첫인상은 단 몇 초 만에 결정되며, 한번 형성된 인상은 쉽게 바뀌지 않습니다. 하지만 몇 가지 간단한 노력으로 당신의 첫인상을 극적으로 개선할 수 있습니다. ...</p>
+            <h4>1. 진심이 담긴 미소</h4>
+            <p>억지 미소가 아닌, 눈까지 함께 웃는 '뒤센 미소'는 상대방에게 진실되고 따뜻한 느낌을 줍니다. 미소는 가장 강력한 긍정적 신호입니다.</p>
+            <h4>2. 자신감 있는 자세</h4>
+            <p>어깨를 펴고 허리를 곧게 세우는 것만으로도 자신감 있고 안정적인 사람으로 보일 수 있습니다. ...</p>
+            <h4>3. 눈 맞춤 (Eye Contact)</h4>
+            <p>상대방의 눈을 부드럽게 바라보는 것은 당신이 상대방의 말에 집중하고 있으며, 존중하고 있다는 의미를 전달합니다. ...</p>
+            <h4>4. 깔끔한 옷차림</h4>
+            <p>비싼 옷이 아니더라도, 상황에 맞고 단정한 옷차림은 자기 관리를 잘하는 신뢰감 있는 사람이라는 인상을 줍니다. ...</p>
+            <h4>5. 긍정적인 언어 사용</h4>
+            <p>대화를 시작할 때 긍정적이고 활기찬 단어를 사용하는 것은 분위기를 밝게 만들고 당신을 더 매력적인 사람으로 보이게 합니다. ...</p>
+        </div>
+    </section>
+    <section id="article2" class="page-section article-page">
+        <div class="section-container article-content">
+            <a href="#insights" class="back-link">&larr; 전체 글 보기</a>
+            <h2>'듣기'의 기술: 최고의 커뮤니케이션 스킬</h2>
+            <p>대부분의 사람들은 자신이 얼마나 말을 잘하는지에 집중하지만, 진정한 소통의 고수는 '잘 듣는 사람'입니다. ... </p>
+        </div>
+    </section>
+    <section id="article3" class="page-section article-page">
+        <div class="section-container article-content">
+            <a href="#insights" class="back-link">&larr; 전체 글 보기</a>
+            <h2>무의식이 드러나는 비언어적 신호들</h2>
+            <p>우리는 말보다 몸으로 더 많은 것을 이야기합니다. 비언어적 신호(Body Language)는 당신의 생각과 감정을 무의식적으로 드러냅니다. ...</p>
+        </div>
+    </section>
+
+
     <footer class="footer">
-        <p>&copy; 2024 AI 첫인상 분석기. 모든 권리 보유.</p>
-        <p class="footer-disclaimer">본 사이트의 분석 결과는 오락용이며, 과학적 정확성을 보장하지 않습니다.</p>
+        <div class="section-container">
+            <div class="footer-nav">
+                <a href="#about">소개</a> | <a href="#privacy">개인정보처리방침</a>
+            </div>
+            <p>&copy; 2024 AI 첫인상 심층 분석. All Rights Reserved.</p>
+            <p class="footer-disclaimer">본 사이트의 모든 콘텐츠와 분석 결과는 오락적 참고 자료이며, 과학적 정확성이나 전문적 조언을 대체하지 않습니다.</p>
+        </div>
     </footer>
 
     <script src="main.js"></script>
