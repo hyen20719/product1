@@ -226,18 +226,31 @@ a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all var(--transition-speed) ease;
+}
+
+.stat-item:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-3px);
 }
 
 .stat-number {
     font-size: 1.8rem;
     font-weight: 800;
     color: var(--accent-color);
+    text-shadow: 0 2px 10px rgba(251, 191, 36, 0.3);
 }
 
 .stat-label {
     font-size: 0.85rem;
-    opacity: 0.9;
+    opacity: 0.95;
     margin-top: 0.3rem;
+    font-weight: 500;
 }
 
 .hero-questions {
@@ -319,13 +332,33 @@ a:hover {
     text-align: center;
     padding: 2.5rem 2rem;
     border-radius: var(--border-radius);
-    background: var(--secondary-color);
+    background: linear-gradient(180deg, var(--white-color) 0%, var(--secondary-color) 100%);
     transition: all var(--transition-speed) ease;
+    border: 1px solid #E5E7EB;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transition: transform var(--transition-speed) ease;
 }
 
 .feature-item:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary-light);
+}
+
+.feature-item:hover::after {
+    transform: scaleX(1);
 }
 
 .feature-icon {
@@ -397,24 +430,28 @@ a:hover {
 /* Analysis Report */
 #analysis-result-container {
     padding: 3rem 2rem;
-    background-color: var(--white-color);
+    background: linear-gradient(180deg, var(--white-color) 0%, #FAFBFF 100%);
     border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(91, 127, 255, 0.1);
 }
 
 #analysis-result-container h2 {
     text-align: center;
-    color: var(--heading-color);
     font-size: 2rem;
     margin-bottom: 2.5rem;
-    font-weight: 700;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 #analysis-result-container h2::after {
     content: '';
     display: block;
-    width: 80px;
-    height: 3px;
+    width: 100px;
+    height: 4px;
     background: var(--gradient-primary);
     margin: 1rem auto 0;
     border-radius: 2px;
@@ -443,21 +480,34 @@ a:hover {
 .summary-box {
     background: linear-gradient(135deg, var(--primary-light) 0%, #F3E8FF 100%);
     border-radius: var(--border-radius);
-    padding: 1.5rem;
+    padding: 2rem;
     margin-top: 2rem;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid rgba(91, 127, 255, 0.2);
+}
+
+.summary-box::before {
+    content: '💫';
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    opacity: 0.7;
 }
 
 .summary-box h3 {
     color: var(--heading-color);
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     margin-bottom: 1rem;
     font-weight: 700;
 }
 
 .summary-box p {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 600;
     color: var(--primary-color);
+    line-height: 1.6;
 }
 
 .report-right {
@@ -465,54 +515,128 @@ a:hover {
 }
 
 #detailed-analysis h3 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     color: var(--heading-color);
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--primary-light);
+    margin-bottom: 2rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(90deg, var(--primary-light) 0%, transparent 100%);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
     font-weight: 700;
 }
 
 .report-section {
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, #FAFBFF 0%, #F5F7FF 100%);
+    border-radius: var(--border-radius);
+    padding: 1.8rem;
+    border-left: 4px solid var(--primary-color);
+    box-shadow: 0 2px 12px rgba(91, 127, 255, 0.08);
+    transition: all var(--transition-speed) ease;
+}
+
+.report-section:hover {
+    box-shadow: 0 4px 20px rgba(91, 127, 255, 0.15);
+    transform: translateX(3px);
 }
 
 .report-section h4 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: var(--primary-color);
     margin-bottom: 1rem;
-    font-weight: 600;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.report-section h4::before {
+    content: '✦';
+    font-size: 1rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.report-section p {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: var(--text-color);
+}
+
+.report-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0 0;
+}
+
+.report-section ul li {
+    padding: 1rem 1.2rem;
+    margin-bottom: 0.8rem;
+    background: var(--white-color);
+    border-radius: var(--border-radius-sm);
+    border-left: 3px solid var(--primary-color);
+    line-height: 1.8;
+    transition: all var(--transition-speed) ease;
+}
+
+.report-section ul li:hover {
+    box-shadow: 0 2px 10px rgba(91, 127, 255, 0.1);
+    transform: translateX(3px);
+}
+
+.report-section ul li strong {
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 1.05rem;
 }
 
 .trait-score {
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
+    padding: 0.8rem 1rem;
+    background: var(--white-color);
+    border-radius: var(--border-radius-sm);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
 }
 
 .trait-score span {
-    font-weight: 600;
+    font-weight: 700;
     width: 100px;
     min-width: 100px;
     color: var(--heading-color);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
 }
 
 .score-bar-bg {
     flex-grow: 1;
-    height: 10px;
-    background-color: var(--secondary-color);
-    border-radius: 5px;
+    height: 12px;
+    background: linear-gradient(90deg, #E8EDFF 0%, #F3E8FF 100%);
+    border-radius: 8px;
     margin-left: 1rem;
     overflow: hidden;
+    position: relative;
 }
 
 .score-bar-fill {
     height: 100%;
     background: var(--gradient-primary);
-    border-radius: 5px;
+    border-radius: 8px;
     width: 0;
     transition: width 1.5s ease-out;
+    box-shadow: 0 2px 8px rgba(91, 127, 255, 0.3);
+}
+
+.trait-score .score-value {
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-left: 1rem;
+    font-size: 0.95rem;
+    min-width: 45px;
+    text-align: right;
 }
 
 /* Insights Section */
@@ -1013,6 +1137,33 @@ a:hover {
         display: block;
         margin: 0.5rem 0;
     }
+
+    .report-section {
+        padding: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .report-section h4 {
+        font-size: 1.1rem;
+    }
+
+    .trait-score {
+        padding: 0.6rem 0.8rem;
+    }
+
+    .trait-score span {
+        width: 80px;
+        min-width: 80px;
+        font-size: 0.85rem;
+    }
+
+    .stat-item {
+        padding: 0.8rem 1rem;
+    }
+
+    .stat-number {
+        font-size: 1.4rem;
+    }
 }
 
 /* Animation classes */
@@ -1027,4 +1178,46 @@ a:hover {
 
 .pulse {
     animation: pulse 2s infinite;
+}
+
+/* Report section animations */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.report-section {
+    animation: slideInLeft 0.5s ease-out forwards;
+}
+
+.report-section:nth-child(1) { animation-delay: 0.1s; }
+.report-section:nth-child(2) { animation-delay: 0.2s; }
+.report-section:nth-child(3) { animation-delay: 0.3s; }
+.report-section:nth-child(4) { animation-delay: 0.4s; }
+.report-section:nth-child(5) { animation-delay: 0.5s; }
+.report-section:nth-child(6) { animation-delay: 0.6s; }
+
+/* Highlight effect for key phrases */
+.highlight-text {
+    background: linear-gradient(180deg, transparent 60%, rgba(91, 127, 255, 0.2) 60%);
+    padding: 0 4px;
+}
+
+/* Enhanced image preview */
+#image-preview {
+    border: none;
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 30px rgba(91, 127, 255, 0.25);
+    transition: all var(--transition-speed) ease;
+}
+
+#image-preview:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 40px rgba(91, 127, 255, 0.35);
 }

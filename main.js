@@ -345,7 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="score-bar-bg">
                         <div class="score-bar-fill" style="width: ${trait.score}%;"></div>
                     </div>
-                    <span>${trait.score}점</span>
+                    <span class="score-value">${trait.score}점</span>
                 </div>
             `;
         });
